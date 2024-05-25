@@ -1,18 +1,42 @@
-from functions import *
-import time
 
-print(time.strftime("Today is [%b - %d - %Y]"))
+
+
+def get_todo(file_path = "todos.txt"):
+    with open(file_path, "r") as file_local:
+        todos_local = file_local.readlines()
+    return todos_local
+
+def write_todos(todos_arg, file_path = "todos.txt"):
+    with open(file_path, "w") as file:
+        file.writelines(todos_arg)
+    
+
+#todos = []
+# file = open('todos.txt', "w")
+# file.close()
+
 while True:
     user_action = input('Typer add, show, edit, complete or exit: ')
     user_action = user_action.strip(" ")
     
+    
     if user_action.startswith('add'):
         
+        # if len(user_action) > 4:
         todo =  user_action[4:]
         todos = get_todo()
         todos.append(todo + "\n")
         write_todos(todos)
 
+        # elif len(user_action) <= 4:
+        #     todo = input("Enter a ToDo: ") + "\n"
+        
+        #     todos = get_todo('todos.txt')
+        
+        #     todos.append(todo)
+        
+        #     write_todos("todos.txt", todo)
+            
     elif user_action.startswith('show'):
         
         todos = get_todo()
