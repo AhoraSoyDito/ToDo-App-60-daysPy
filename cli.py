@@ -9,13 +9,13 @@ while True:
     if user_action.startswith('add'):
         
         todo =  user_action[4:]
-        todos = get_todo()
+        todos = get_todos()
         todos.append(todo + "\n")
         write_todos(todos)
 
     elif user_action.startswith('show'):
         
-        todos = get_todo()
+        todos = get_todos()
         
         for index, item in enumerate(todos):
             item = item.strip('\n')
@@ -28,7 +28,7 @@ while True:
             print(f"You are editing ToDo number {number}")
             number = number - 1
 
-            todos = get_todo()
+            todos = get_todos()
             
             new_todo = input("Enter new ToDo: ")
             todos[number] = new_todo + "\n"
@@ -43,7 +43,7 @@ while True:
         try:
             number = int(user_action[9:])
             
-            todos = get_todo()
+            todos = get_todos()
             
             todo_to_remove = todos[number - 1].strip()
                 
